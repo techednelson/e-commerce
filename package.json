@@ -5,11 +5,18 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx affected --target=test",
+    "start:infra": "docker-compose -f docker-compose.infra.yml up",
+    "start:all": "nx run-many --target=serve --projects=auth --parallel",
+    "build:all": "nx run-many --target=build --projects=auth --parallel",
+    "deploy:all": "nx affected --target=deploy && yarn run docker:up",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down"
   },
   "private": true,
   "dependencies": {
     "express": "4.17.2",
+    "express-validator": "^6.14.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
