@@ -4,10 +4,11 @@ import { body } from 'express-validator';
 import User from '../models/user';
 import BadRequestError from '../errors/bad-request-error';
 import validationHandler from '../middlewares/validation-handler';
+import { Url } from '../enums/url';
 
 const router = express.Router();
 router.post(
-  '/auth/users/sign-up',
+  Url.SignUp,
   [
     body('email').isEmail().withMessage('Email must be valid'),
     body('password')

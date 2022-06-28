@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express';
+import { Url } from '../enums/url';
 
 const router = express.Router();
-router.post('/auth/users/sign-out', (req: Request, res: Response) => {
+router.post(Url.SingOut, (req: Request, res: Response) => {
   req.session = null;
   res.send('Log out successful');
 });

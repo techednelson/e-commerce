@@ -1,6 +1,6 @@
 export enum Url {
-  SignUp = '/auth/users/sign-up',
-  SignIn = '/auth/users/sign-in',
-  SingOut = '/auth/users/sign-out',
-  CurrentUser = '/auth/users/current-user',
+  SignUp = '/api/users/sign-up',
+  SignIn = '/api/users/sign-in',
+  SingOut = '/api/users/sign-out',
+  CurrentUser = '/api/users/current-user',
 }

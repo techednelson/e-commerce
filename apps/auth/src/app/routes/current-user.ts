@@ -1,9 +1,10 @@
 import express, { Request, Response } from 'express';
 import currentUserHandler from '../middlewares/current-user-handler';
+import { Url } from '../enums/url';
 
 const router = express.Router();
 router.get(
-  '/auth/users/current-user',
+  Url.CurrentUser,
   currentUserHandler,
   (req: Request, res: Response) => {
     const currentUser = req.currentUser || null;

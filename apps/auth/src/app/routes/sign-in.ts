@@ -5,10 +5,11 @@ import BadRequestError from '../errors/bad-request-error';
 import { comparePassword } from '../services/password';
 import User from '../models/user';
 import validationHandler from '../middlewares/validation-handler';
+import { Url } from '../enums/url';
 
 const router = express.Router();
 router.post(
-  '/auth/users/sign-in',
+  Url.SignIn,
   [
     body('email').isEmail().withMessage('Email must be valid'),
     body('password')
