@@ -1,27 +1,18 @@
-import * as express from 'express';
-import { userRouter } from './app/routes/current-user';
-import { signInRouter } from './app/routes/sign-in';
-import { signUpRouter } from './app/routes/sign-up';
-import { signOutRouter } from './app/routes/sign-out';
-import errorHandler from './app/middlewares/error-handler';
-import { NotFoundError } from './app/errors/not-found-error';
+import 'dotenv/config';
+import mongoose from 'mongoose';
+import app from './app/app';
 
-const app = express();
-app.use(express.json());
+const start = async () => {
+  try {
+    await mongoose.connect('mongodb://localhost:27017/auth');
+    console.log('connected to MongoDB');
 
-app.use(userRouter);
-app.use(signUpRouter);
-app.use(signInRouter);
-app.use(signOutRouter);
+    const port = process.env.port || 3333;
+    await app.listen(port);
+    console.log(`Listening at http://localhost:${port}/auth`);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
-app.all('*', async (req, res, next) => {
-  next(new NotFoundError());
-});
-
-app.use(errorHandler);
-
-const port = process.env.port || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
+start();

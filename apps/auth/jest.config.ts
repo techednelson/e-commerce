@@ -8,6 +8,7 @@ export default {
     },
   },
   testEnvironment: 'node',
+  setupFilesAfterEnv: ['./src/test/setup.ts'],
   transform: {
     '^.+\\.[tj]s$': 'ts-jest',
   },
