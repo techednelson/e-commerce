@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  client:
+    image: webtechnelson/client
+    ports:
+      - '4200:4200'
