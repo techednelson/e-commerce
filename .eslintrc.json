@@ -24,7 +24,9 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+        "arrow-body-style": ["error", "as-needed"]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
