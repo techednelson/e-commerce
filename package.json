@@ -5,16 +5,17 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "build-all": "nx affected --target=build",
+    "build-all:affected": "nx affected --target=build --projects=auth,client --parallel",
+    "build-all": "nx run-many --target=build --projects=auth,client --parallel",
     "test": "nx affected --target=test",
     "test:watch": "nx affected --target=test --watch",
-    "start:infra": "docker-compose -f docker-compose.infra.yml up",
-    "docker-infra:dev": "docker-compose -f infra/docker/docker-compose.dev.yml up",
+    "start-infra:dev": "docker-compose -f infra/docker/docker-compose.dev.yml up",
     "start-all:dev": "nx run-many --target=serve --projects=auth,client --parallel",
-    "build:all": "nx run-many --target=build --projects=auth,client --parallel",
-    "deploy-all:prod": "nx affected --target=deploy",
+    "deploy-all:minikube": "yarn run build-all:affected  && sh infra/k8s-dev/build-docker-images.sh",
+    "stop-deploy:minikube": "minikube stop",
     "docker:up": "docker-compose up",
-    "docker:down": "docker-compose down"
+    "docker:down": "docker-compose down",
+    "docker:stop": "docker-compose stop"
   },
   "private": true,
   "dependencies": {

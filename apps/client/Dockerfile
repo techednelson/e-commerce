@@ -12,6 +12,6 @@ EXPOSE ${PORT}
 
 RUN yarn install --production=true
 
-RUN yarn add @nrwl/next
+#RUN yarn add @nrwl/next
 
 CMD yarn next start

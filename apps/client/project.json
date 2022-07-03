@@ -3,16 +3,6 @@
   "sourceRoot": "apps/client",
   "projectType": "application",
   "targets": {
-    "deploy": {
-      "builder": "@nrwl/workspace:run-commands",
-      "options": {
-        "commands": [
-          "nx build client",
-          "docker build -f ./apps/client/Dockerfile . -t client"
-        ],
-        "parallel": false
-      }
-    },
     "build": {
       "executor": "@nrwl/next:build",
       "outputs": ["{options.outputPath}"],

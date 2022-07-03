@@ -3,16 +3,6 @@
   "sourceRoot": "apps/auth/src",
   "projectType": "application",
   "targets": {
-    "deploy": {
-      "builder": "@nrwl/workspace:run-commands",
-      "options": {
-        "commands": [
-          "nx build auth",
-          "docker build -f ./apps/auth/Dockerfile . -t auth"
-        ],
-        "parallel": false
-      }
-    },
     "build": {
       "executor": "@nrwl/node:webpack",
       "outputs": ["{options.outputPath}"],
