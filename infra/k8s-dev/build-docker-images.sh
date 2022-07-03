@@ -3,6 +3,8 @@ set -o allexport
 source .env set
 +o allexport
 
+Kubectl config use-context docker-desktop
+
 minikube start
 
 minikube docker-env
