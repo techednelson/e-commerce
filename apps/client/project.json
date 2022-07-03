@@ -3,6 +3,19 @@
   "sourceRoot": "apps/client",
   "projectType": "application",
   "targets": {
+    "build-docker": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/client",
+        "outputPath": "apps/client/dist"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
     "build": {
       "executor": "@nrwl/next:build",
       "outputs": ["{options.outputPath}"],

@@ -3,6 +3,30 @@
   "sourceRoot": "apps/auth/src",
   "projectType": "application",
   "targets": {
+    "build-docker": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "apps/auth/dist",
+        "main": "apps/auth/src/main.ts",
+        "tsConfig": "apps/auth/tsconfig.app.json",
+        "assets": ["apps/auth/src/assets"],
+        "generatePackageJson": true
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/auth/src/environments/environment.ts",
+              "with": "apps/auth/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
     "build": {
       "executor": "@nrwl/node:webpack",
       "outputs": ["{options.outputPath}"],

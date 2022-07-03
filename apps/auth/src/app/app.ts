@@ -9,7 +9,7 @@ import NotFoundError from './errors/not-found-error';
 import errorHandler from './middlewares/error-handler';
 
 const app = express();
-// app.set('trust proxy', true);
+app.set('trust proxy', true);
 app.use(express.json());
 app.use(
   cookieSession({

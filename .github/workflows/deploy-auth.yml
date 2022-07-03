@@ -1,11 +1,11 @@
-name: deploy-client
+name: deploy-auth
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'client/**'
+      - 'auth/**'
 
 jobs:
   build:
@@ -22,10 +22,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -f ./apps/client/Dockerfile . -t webtechnelson/client
+        run: docker build -f ./apps/auth/Dockerfile . -t webtechnelson/auth
 
       - name: Push Docker image
-        run: docker push webtechnelson/client
+        run: docker push webtechnelson/auth
 
       - name: Install doctl to manage kubernetes cluster
         uses: digitalocean/action-doctl@v2

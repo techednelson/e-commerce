@@ -12,10 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        env:
-          DOCTL_KUBE_CONFIG: ${{ secrets.DOCTL_KUBE_CONFIG }}
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      - run: doctl kubernetes cluster kubeconfig save $DOCTL_KUBE_CONFIG
+      - run: doctl kubernetes cluster kubeconfig save e-commerce
       - run: kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-prod
