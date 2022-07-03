@@ -16,15 +16,15 @@ spec:
         - name: client
           image: client:latest
           imagePullPolicy: Never
-          ports:
-            - containerPort: 4200
+#          ports:
+#            - containerPort: 4200
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: client-service
 spec:
-  type: NodePort
+#  type: NodePort
   selector:
     app: client
   ports:
