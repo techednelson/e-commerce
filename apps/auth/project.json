@@ -8,7 +8,7 @@
       "options": {
         "commands": [
           "nx build auth",
-          "docker build -f ./apps/auth/Dockerfile . -t webtechnelson/auth"
+          "docker build -f ./apps/auth/Dockerfile . -t auth"
         ],
         "parallel": false
       }

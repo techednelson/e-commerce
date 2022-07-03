@@ -8,7 +8,7 @@
       "options": {
         "commands": [
           "nx build client",
-          "docker build -f ./apps/client/Dockerfile . -t webtechnelson/client"
+          "docker build -f ./apps/client/Dockerfile . -t client"
         ],
         "parallel": false
       }

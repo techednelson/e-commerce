@@ -5,13 +5,14 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
+    "build-all": "nx affected --target=build",
     "test": "nx affected --target=test",
     "test:watch": "nx affected --target=test --watch",
     "start:infra": "docker-compose -f docker-compose.infra.yml up",
     "docker-infra:dev": "docker-compose -f infra/docker/docker-compose.dev.yml up",
     "start-all:dev": "nx run-many --target=serve --projects=auth,client --parallel",
     "build:all": "nx run-many --target=build --projects=auth,client --parallel",
-    "deploy:all": "nx affected --target=deploy",
+    "deploy-all:prod": "nx affected --target=deploy",
     "docker:up": "docker-compose up",
     "docker:down": "docker-compose down"
   },
@@ -20,6 +21,7 @@
     "@emotion/react": "11.9.3",
     "@emotion/server": "11.4.0",
     "@emotion/styled": "11.9.3",
+    "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.6",
     "@nrwl/next": "14.3.6",
     "cookie-session": "^2.0.0",

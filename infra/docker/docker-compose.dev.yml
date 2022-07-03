@@ -52,6 +52,6 @@ services:
 #      - ./data:/data
 #      - ./letsencrypt:/etc/letsencrypt
 
-volumes:
-  pg:
-    driver: local
+#volumes:
+#  pg:
+#    driver: local
