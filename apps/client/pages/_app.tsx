@@ -1,38 +1,18 @@
-import * as React from 'react';
-import Head from 'next/head';
 import { AppProps } from 'next/app';
+import Head from 'next/head';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { CacheProvider, EmotionCache } from '@emotion/react';
-import theme from '../src/theme';
-import createEmotionCache from '../src/createEmotionCache';
-
-// Client-side cache, shared for the whole session of the user in the browser.
-const clientSideEmotionCache = createEmotionCache();
-
-interface CustomAppProps extends AppProps {
-  emotionCache?: EmotionCache;
-}
+import '../styles/globals.css';
 
 const queryClient = new QueryClient();
 
-const CustomApp = ({
-  Component,
-  emotionCache = clientSideEmotionCache,
-  pageProps,
-}: CustomAppProps) => (
+const CustomApp = ({ Component, pageProps }: AppProps) => (
   <QueryClientProvider client={queryClient}>
-    <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+    <Head>
+      <title>Welcome to e-commerce!</title>
+    </Head>
+    <main className="app">
+      <Component {...pageProps} />
+    </main>
   </QueryClientProvider>
 );
 

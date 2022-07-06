@@ -13,7 +13,7 @@ COPY ./ ./
 RUN yarn install
 
 # Install missing dependency at runtime in CI/CD pipeline
-#RUN yarn add -D  @types/jest
+RUN yarn add -D  @types/react
 #RUN yarn add @nrwl/next
 
 # Build ts project for production and move it to apps/client/dist

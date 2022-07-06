@@ -2,7 +2,6 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "preserve",
-    "jsxImportSource": "@emotion/react",
     "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -13,7 +12,7 @@
     "isolatedModules": true,
     "incremental": true,
     "types": [
-//      "jest", Todo comment out because it throws an error on CI/Cd environment highlighting a missing jest definition file *d.ts
+      //      "jest", Todo comment out because it throws an error on CI/Cd environment highlighting a missing jest definition file *d.ts
       "node"
     ]
   },

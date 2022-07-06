@@ -4,14 +4,8 @@ metadata:
   name: ingress-service
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    #    nginx.ingress.kubernetes.io/use-regex: 'true'
-    cert-manager.io/cluster-issuer: letsencrypt-dev
+    nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
-  tls:
-  - hosts:
-    - e-commerce.dev
-    secretName: e-commerce.dev-tls
   rules:
   - host: e-commerce.dev
     http:
