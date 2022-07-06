@@ -38,5 +38,3 @@ kubectl apply -f infra/k8s-dev/client-deployment.yml
 # Deploy ingress-controller service to pod in kubernetes cluster
 kubectl apply -f infra/k8s-dev/ingress-service.yml
 
-# Deploy ACME(let's encrypt) cluster issuer service to pod in minikube kubernetes cluster
-kubectl apply -f infra/kubernetes/cert-manager/cluster-issuer-acme-minikube.yml
