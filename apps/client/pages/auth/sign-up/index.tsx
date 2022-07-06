@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -12,8 +10,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from 'react';
-import axios from 'axios';
+import { FormEvent, useState } from 'react';
+import { useMutation } from 'react-query';
+import { signUp } from '../../../services/auth';
 
 const Copyright = (props: any) => (
   <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -29,20 +28,23 @@ const Copyright = (props: any) => (
 const theme = createTheme();
 
 const SignUp = () => {
+  const { isLoading, isSuccess, mutateAsync } = useMutation(signUp);
   // const [email, setEmail] = useState<string>('');
   // const [password, setPassword] = useState<string>('');
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       const formData = new FormData(event.currentTarget);
-      const { data } = await axios.post('/api/users/sign-up', {
+      const payload = {
         email: formData.get('email'),
         password: formData.get('password'),
-      });
+      };
+      const { data } = await mutateAsync(payload);
       console.log(data);
     } catch (err) {
+      console.log(err);
       setErrors(err.response.data.errors);
     }
   };
