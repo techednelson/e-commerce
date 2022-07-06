@@ -2,11 +2,11 @@
 
 # Import variables from .env.prod file
 set -o allexport
-source .env set
+source .env.prod set
 +o allexport
 
 # Build only changed apps
-yarn env-cmd -f .env.prod run build-all:affected
+yarn run nx affected --target=build
 
 # Switch always to local kubernetes context to avoid mistakes with kubernetes cluster in production
 Kubectl config use-context docker-desktop
@@ -37,3 +37,6 @@ kubectl apply -f infra/k8s-dev/client-deployment.yml
 
 # Deploy ingress-controller service to pod in kubernetes cluster
 kubectl apply -f infra/k8s-dev/ingress-service.yml
+
+# Deploy ACME(let's encrypt) cluster issuer service to pod in minikube kubernetes cluster
+kubectl apply -f infra/kubernetes/cert-manager/cluster-issuer-acme-minikube.yml
