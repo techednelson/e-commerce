@@ -31,15 +31,20 @@ const theme = createTheme();
 const SignUp = () => {
   // const [email, setEmail] = useState<string>('');
   // const [password, setPassword] = useState<string>('');
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const { data } = await axios.post('/api/users/sign-up', {
-      email: formData.get('email'),
-      password: formData.get('password'),
-    });
-    console.log(data);
+    try {
+      const formData = new FormData(event.currentTarget);
+      const { data } = await axios.post('/api/users/sign-up', {
+        email: formData.get('email'),
+        password: formData.get('password'),
+      });
+      console.log(data);
+    } catch (err) {
+      setErrors(err.response.data.errors);
+    }
   };
 
   return (
@@ -109,6 +114,7 @@ const SignUp = () => {
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
+        {errors.map((error) => error.message)}
       </Container>
     </ThemeProvider>
   );
