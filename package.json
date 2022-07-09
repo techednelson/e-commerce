@@ -13,7 +13,7 @@
     "start-infra:dev": "docker-compose -f infra/docker/docker-compose.dev.yml up && yarn run stop-deploy:minikube",
     "start-apps:dev": "npx env-cmd -f .env.dev nx run-many --target=serve --projects=auth,client --parallel",
     "deploy:minikube": "sh infra/k8s-dev/deploy-minikube.sh",
-    "stop-deploy:minikube": "minikube stop",
+    "stop:minikube": "minikube stop",
     "docker:up": "docker-compose up",
     "docker:down": "docker-compose down",
     "docker:stop": "docker-compose stop"

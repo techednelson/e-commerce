@@ -5,9 +5,6 @@ set -o allexport
 source .env.prod set
 +o allexport
 
-# Build only changed apps
-yarn run nx run-many --target=build --projects=auth,client --parallel
-
 # Switch always to local kubernetes context to avoid mistakes with kubernetes cluster in production
 Kubectl config use-context docker-desktop
 
