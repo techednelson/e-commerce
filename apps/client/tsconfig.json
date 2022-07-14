@@ -12,7 +12,8 @@
     "isolatedModules": true,
     "incremental": true,
     "types": [
-      //      "jest", Todo comment out because it throws an error on CI/Cd environment highlighting a missing jest definition file *d.ts
+      // Todo comment out for production because it throws an error on CI/Cd environment highlighting a missing jest definition file *d.ts
+//           "jest",
       "node"
     ]
   },

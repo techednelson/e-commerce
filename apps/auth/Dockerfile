@@ -13,7 +13,6 @@ COPY ./ ./
 RUN yarn install
 
 # Install missing dependencies at runtime in CI/CD pipeline
-#RUN yarn add -D  @types/jest
 RUN yarn add @nrwl/node
 
 # Build ts project for production and move it to apps/auth/dist

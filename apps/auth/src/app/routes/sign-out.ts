@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { Url } from '../enums/url';
+import { Url } from '@e-commerce/domain';
 
 const router = express.Router();
 router.post(Url.SingOut, (req: Request, res: Response) => {

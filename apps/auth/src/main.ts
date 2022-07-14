@@ -4,11 +4,7 @@ import app from './app/app';
 
 const start = async () => {
   try {
-    //Todo temp fix until figure out env or secrets in kubernetes
-    await mongoose.connect(
-      process.env.NX_MONGO_URL ?? 'mongodb://auth-mongo-service:27017/auth'
-    );
-
+    await mongoose.connect(process.env.MONGO_URI);
     console.log('connected to MongoDB');
     const port = process.env.port || 3333;
     await app.listen(port);

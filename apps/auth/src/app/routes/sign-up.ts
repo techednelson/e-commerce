@@ -4,7 +4,7 @@ import { body } from 'express-validator';
 import User from '../models/user';
 import BadRequestError from '../errors/bad-request-error';
 import validationHandler from '../middlewares/validation-handler';
-import { Url } from '../enums/url';
+import { ISignInUp, Url } from '@e-commerce/domain';
 
 const router = express.Router();
 router.post(
@@ -18,7 +18,7 @@ router.post(
   ],
   validationHandler,
   async (req: Request, res: Response, next: NextFunction) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body as ISignInUp;
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {

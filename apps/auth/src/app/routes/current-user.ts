@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import currentUserHandler from '../middlewares/current-user-handler';
-import { Url } from '../enums/url';
+import { Url } from '@e-commerce/domain';
 
 const router = express.Router();
 router.get(

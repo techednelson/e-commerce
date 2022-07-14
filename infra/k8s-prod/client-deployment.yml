@@ -16,6 +16,17 @@ spec:
         - name: client
           image: webtechnelson/client:latest
           imagePullPolicy: Always
+          env:
+            - name: UNSPLASH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: unsplash-client-id-secret
+                  key: UNSPLASH_CLIENT_ID
+            - name: UNSPLASH_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: unsplash-username-secret
+                  key: UNSPLASH_USERNAME
 ---
 apiVersion: v1
 kind: Service
