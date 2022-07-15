@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import Navbar from '../navbar/navbar';
+import { FC } from 'react';
 import Spinner from './spinner';
 import SignInUpModal from './signInUpModal';
+import Navbar from './navbar/navbar';
 
 const Layout: FC<any> = ({ children }) => (
   <>

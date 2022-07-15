@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from '../components/dashboard/card';
 import { getPhotosByCollectionId } from '../services/photos';
-import Layout from '../components/common/layout';
-import Spinner from '../components/common/spinner';
+import Layout from '../components/layout';
+import Spinner from '../components/spinner';
 
 interface ICategories {
   data: any;

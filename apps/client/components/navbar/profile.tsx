@@ -5,20 +5,20 @@ import Image from 'next/image';
 import { useMutation, useQuery } from 'react-query';
 import { currentUser, signOut } from '../../services/auth';
 import { useRouter } from 'next/router';
-import { refresh } from '../../utils';
+import { refreshBrowser } from '../../utils';
 
 const Profile = () => {
   const { mutateAsync } = useMutation(signOut);
   const { user, setUser } = useStore(userSelector);
   const { data } = useQuery(['currentUser'], currentUser, { enabled: !user });
   const router = useRouter();
-  setUser(user ?? data?.data?.currentUser);
+  setUser(user ?? data?.currentUser);
 
   const handleSignOut = async () => {
     try {
       await mutateAsync();
       setUser(null);
-      refresh(router);
+      refreshBrowser(router);
     } catch (err) {
       console.error(err);
     }

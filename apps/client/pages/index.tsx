@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { NextPage } from 'next';
 import Dashboard from '../components/dashboard/dashboard';
-import Layout from '../components/common/layout';
+import Layout from '../components/layout';
 import { getCollections } from '../services/photos';
 
 interface IHome {

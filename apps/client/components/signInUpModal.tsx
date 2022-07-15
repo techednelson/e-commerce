@@ -1,9 +1,9 @@
 import React, { FormEvent, useState } from 'react';
 import Image from 'next/image';
 import { useMutation } from 'react-query';
-import { signIn, signUp } from '../../services/auth';
+import { signIn, signUp } from '../services/auth';
 import { useRouter } from 'next/router';
-import { refresh } from '../../utils';
+import { refreshBrowser } from '../utils';
 
 const SignInUpModal = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -23,7 +23,7 @@ const SignInUpModal = () => {
       isSignIn
         ? await signInMutation.mutateAsync(payload)
         : await signUpMutation.mutateAsync(payload);
-      refresh(router);
+      refreshBrowser(router);
     } catch (err) {
       setErrors(err.response.data.errors);
     }

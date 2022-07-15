@@ -1,12 +1,10 @@
-import axios from 'axios';
 import { Url, ISignInUp } from '@e-commerce/domain';
+import { getAxios, postAxios } from '../utils';
 
-export const signUp = async (body: ISignInUp) =>
-  await axios.post(Url.SignUp, body);
+export const signUp = (body: ISignInUp) => postAxios(Url.SignUp, body);
 
-export const signIn = async (body: ISignInUp) =>
-  await axios.post(Url.SignIn, body);
+export const signIn = (body: ISignInUp) => postAxios(Url.SignIn, body);
 
-export const signOut = async () => await axios.post(Url.SingOut);
+export const signOut = () => postAxios(Url.SingOut);
 
-export const currentUser = async () => await axios.get(Url.CurrentUser);
+export const currentUser = () => getAxios(Url.CurrentUser);
