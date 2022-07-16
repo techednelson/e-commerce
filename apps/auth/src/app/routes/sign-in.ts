@@ -1,11 +1,14 @@
 import express, { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { body } from 'express-validator';
-import BadRequestError from '../errors/bad-request-error';
 import { comparePassword } from '../services/password';
 import User from '../models/user';
-import validationHandler from '../middlewares/validation-handler';
-import { ISignInUp, Url } from '@e-commerce/domain';
+import {
+  ISignInUp,
+  BadRequestError,
+  validationHandler,
+  Url,
+} from '@e-commerce/shared';
 
 const router = express.Router();
 router.post(

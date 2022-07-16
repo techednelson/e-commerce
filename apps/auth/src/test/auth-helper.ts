@@ -1,6 +1,6 @@
 import request from 'supertest';
 import app from '../app/app';
-import { Url } from '../app/enums/url';
+import { Url } from '@e-commerce/shared';
 
 const authHelper = async () => {
   const email = 'test@test.com';

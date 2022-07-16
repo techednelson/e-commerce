@@ -1,4 +1,4 @@
-import { Url, ISignInUp } from '@e-commerce/domain';
+import { ISignInUp, Url } from '@e-commerce/shared';
 import { getAxios, postAxios } from '../utils';
 
 export const signUp = (body: ISignInUp) => postAxios(Url.SignUp, body);

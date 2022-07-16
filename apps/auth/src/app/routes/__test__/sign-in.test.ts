@@ -1,16 +1,15 @@
 import request from 'supertest';
 import app from '../../app';
-import { Url } from '../../enums/url';
+import { Url } from '@e-commerce/shared';
 
-it('fails when a email that does not exist is supplied', async () => {
-  return request(app)
+it('fails when a email that does not exist is supplied', async () =>
+  request(app)
     .post(Url.SignIn)
     .send({
       email: 'test@test.com',
       password: 'password',
     })
-    .expect(400);
-});
+    .expect(400));
 
 it('fails when an incorrect password is supplied', async () => {
   await request(app)

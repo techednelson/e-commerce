@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { Url } from '@e-commerce/domain';
+import { Url } from '@e-commerce/shared';
 
 const router = express.Router();
 router.post(Url.SingOut, (req: Request, res: Response) => {

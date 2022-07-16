@@ -1,36 +1,33 @@
 import request from 'supertest';
 import app from '../../app';
-import { Url } from '../../enums/url';
+import { Url } from '@e-commerce/shared';
 
-it('returns a 201 on successful sign-up', async () => {
-  return request(app)
+it('returns a 201 on successful sign-up', async () =>
+  request(app)
     .post(Url.SignUp)
     .send({
       email: 'test@test.com',
       password: 'password',
     })
-    .expect(201);
-});
+    .expect(201));
 
-it('returns a 400 with an invalid email', async () => {
-  return request(app)
+it('returns a 400 with an invalid email', async () =>
+  request(app)
     .post(Url.SignUp)
     .send({
       email: 'alskdflaskjfd',
       password: 'password',
     })
-    .expect(400);
-});
+    .expect(400));
 
-it('returns a 400 with an invalid password', async () => {
-  return request(app)
+it('returns a 400 with an invalid password', async () =>
+  request(app)
     .post(Url.SignUp)
     .send({
       email: 'alskdflaskjfd',
       password: 'p',
     })
-    .expect(400);
-});
+    .expect(400));
 
 it('returns a 400 with missing email and password', async () => {
   await request(app)

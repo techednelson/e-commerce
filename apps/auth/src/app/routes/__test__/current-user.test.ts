@@ -1,6 +1,6 @@
 import request from 'supertest';
 import app from '../../app';
-import { Url } from '../../enums/url';
+import { Url } from '@e-commerce/shared';
 import authCookieHelper from '../../../test/auth-helper';
 
 it('responds with details about the current user', async () => {

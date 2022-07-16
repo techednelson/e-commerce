@@ -1,6 +1,6 @@
 import request from 'supertest';
 import app from '../../app';
-import { Url } from '../../enums/url';
+import { Url } from '@e-commerce/shared';
 
 it('clears the cookie after signing out', async () => {
   await request(app)

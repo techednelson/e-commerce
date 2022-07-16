@@ -1,6 +1,5 @@
 import express, { Request, Response } from 'express';
-import currentUserHandler from '../middlewares/current-user-handler';
-import { Url } from '@e-commerce/domain';
+import { currentUserHandler, Url } from '@e-commerce/shared';
 
 const router = express.Router();
 router.get(

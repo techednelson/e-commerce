@@ -5,14 +5,9 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: 'true'
-    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  tls:
-  - hosts:
-    - www.e-commerce-prod.shop
-    secretName: www.e-commerce-prod.shop-tls
   rules:
-  - host: www.e-commerce-prod.shop
+  - host: e-commerce.dev
     http:
       paths:
       - path: /api/users/?(.*)

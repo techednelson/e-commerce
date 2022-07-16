@@ -1,11 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 import cookieSession from 'cookie-session';
-import { userRouter } from './routes/current-user';
-import { signUpRouter } from './routes/sign-up';
-import { signInRouter } from './routes/sign-in';
-import { signOutRouter } from './routes/sign-out';
-import { NotFoundError, errorHandler } from '@e-commerce/shared';
+import { errorHandler, NotFoundError } from '@e-commerce/shared';
 
 const app = express();
 app.set('trust proxy', true);
@@ -16,10 +12,6 @@ app.use(
     secure: process.env.NODE_ENV === 'production',
   })
 );
-app.use(userRouter);
-app.use(signUpRouter);
-app.use(signInRouter);
-app.use(signOutRouter);
 
 app.all('*', async (req, res, next) => {
   throw new NotFoundError();

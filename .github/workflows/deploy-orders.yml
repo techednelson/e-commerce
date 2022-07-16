@@ -1,11 +1,11 @@
-name: deploy-auth
+name: deploy-orders
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'apps/auth/**'
+      - 'apps/orders/**'
 
 jobs:
   build:
@@ -22,10 +22,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -f ./apps/auth/Dockerfile . -t webtechnelson/auth
+        run: docker build -f ./apps/orders/Dockerfile . -t webtechnelson/orders
 
       - name: Push Docker image
-        run: docker push webtechnelson/auth
+        run: docker push webtechnelson/orders
 
       - name: Install doctl to manage kubernetes cluster
         uses: digitalocean/action-doctl@v2
@@ -36,4 +36,4 @@ jobs:
         run: doctl kubernetes cluster kubeconfig save e-commerce
 
       - name: Redeploy image inside kubernetes cluster
-        run: kubectl rollout restart deployment auth-deployment
+        run: kubectl rollout restart deployment orders-deployment
