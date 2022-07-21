@@ -1,11 +1,12 @@
 import React from 'react';
 import Card from '../components/dashboard/card';
-import { getPhotosByCollectionId } from '../services/photos';
+import { getPhotosByCollection } from '../services/photos';
 import Layout from '../components/layout';
 import Spinner from '../components/spinner';
+import { IClothing } from '../interfaces/IClothing';
 
 interface ICategories {
-  data: any;
+  data: IClothing[];
 }
 
 const Categories = ({ data }: ICategories) => {
@@ -15,25 +16,12 @@ const Categories = ({ data }: ICategories) => {
   return (
     <Layout>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {data?.map(({ id, urls }) => (
-          <Card key={id} src={urls.thumb} />
+        {data?.map(({ id, name, price, src }) => (
+          <Card key={id} src={src} name={name} price={price} />
         ))}
       </div>
     </Layout>
   );
-};
-
-const getCategoryId = (category: string): string => {
-  switch (category) {
-    case 'women':
-      return 'nmKlbiw0bMg';
-    case 'men':
-      return 'VE-RnmcfgBg';
-    case 'kids':
-      return 'BisIwcJaWRQ';
-    default:
-      return null;
-  }
 };
 
 export const getServerSideProps = async ({ req, res, query }) => {
@@ -41,8 +29,7 @@ export const getServerSideProps = async ({ req, res, query }) => {
     'Cache-Control',
     'public, s-maxage=10, stale-while-revalidate=59'
   );
-  const id = getCategoryId(query.category);
-  const data = await getPhotosByCollectionId(id);
+  const data = await getPhotosByCollection(query.category);
   return { props: { data } };
 };
 

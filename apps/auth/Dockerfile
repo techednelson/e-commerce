@@ -13,7 +13,7 @@ COPY ./ ./
 RUN yarn install
 
 # Install missing dependencies at runtime in CI/CD pipeline
-RUN yarn add @nrwl/node
+#RUN yarn add @nrwl/node
 
 # Build ts project for production and move it to apps/auth/dist
 RUN yarn nx run auth:build-docker:production --verbose

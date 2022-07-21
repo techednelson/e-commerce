@@ -13,7 +13,7 @@ COPY ./ ./
 RUN yarn install
 
 # Install missing dependencies at runtime in CI/CD pipeline
-RUN yarn add @nrwl/node
+#RUN yarn add @nrwl/node
 
 # Build ts project for production and move it to apps/orders/dist
 RUN yarn nx run orders:build-docker:production --verbose

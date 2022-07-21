@@ -1,18 +1,20 @@
 import express from 'express';
 import 'express-async-errors';
 import cookieSession from 'cookie-session';
-import { userRouter } from './routes/current-user';
-import { signUpRouter } from './routes/sign-up';
-import { signInRouter } from './routes/sign-in';
-import { signOutRouter } from './routes/sign-out';
 import { NotFoundError, errorHandler } from '@e-commerce/shared';
+import {
+  signInRouter,
+  signOutRouter,
+  signUpRouter,
+  userRouter,
+} from './routes';
 
 const app = express();
 app.set('trust proxy', true);
 app.use(express.json());
 app.use(
   cookieSession({
-    signed: false,
+    signed: process.env.NODE_ENV === 'production',
     secure: process.env.NODE_ENV === 'production',
   })
 );

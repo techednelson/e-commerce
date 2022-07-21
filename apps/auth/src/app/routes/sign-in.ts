@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { body } from 'express-validator';
 import { comparePassword } from '../services/password';
-import User from '../models/user';
+import User from '../models/User';
 import {
   ISignInUp,
   BadRequestError,
